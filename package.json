@@ -1,0 +1,26 @@
+{
+  "name": "geiger",
+  "version": "0.0.0",
+  "description": "static site generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jarofghosts/geiger.git"
+  },
+  "keywords": [
+    "static",
+    "site",
+    "generator",
+    "blog",
+    "flat",
+    "file"
+  ],
+  "author": "jesse keane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/geiger/issues"
+  }
+}
