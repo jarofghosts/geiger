@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var c = require('commander'),
     md = require('marked'),
     ejs = require('ejs'),
