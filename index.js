@@ -8,5 +8,11 @@ var c = require('commander'),
 
 if (isCli) {
   c
-    .version('0.0.0');
+    .version('0.0.0')
+    .usage('[options] [srcdir] dstdir')
+    .option('-w, --watch', 'watch srcdir for changes and compile automatically')
+    .parse(process.argv);
+
+  if (!c.args.length) c.help();
+
 }
