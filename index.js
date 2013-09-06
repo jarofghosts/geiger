@@ -5,6 +5,8 @@ var c = require('commander'),
     ejs = require('ejs'),
     fs = require('fs'),
     path = require('path'),
+    dirstream = require('dir-stream'),
+    Readable = require('stream').Readable,
     isCli = (require.main === module);
 
 function Geiger(options) {
@@ -22,6 +24,11 @@ function Geiger(options) {
 }
 
 Geiger.prototype.compile = function () {
+  var rs = new Readable();
+  rs.push(this.settings.dir);
+  rs.push(null);
+
+  files = rs.pipe(dirstream({ onlyFiles: true }));
 };
 
 Geiger.prototype.watch = function () {
