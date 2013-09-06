@@ -23,6 +23,12 @@ function Geiger(options) {
   return this;
 }
 
+Geiger.prototype.compile = function () {
+};
+
+Geiger.prototype.watch = function () {
+};
+
 if (isCli) {
   c
     .version('0.0.0')
