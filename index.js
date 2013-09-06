@@ -5,8 +5,6 @@ var c = require('commander'),
     ejs = require('ejs'),
     fs = require('fs'),
     path = require('path'),
-    through = require('through'),
-    concat = require('concat-stream'),
     isCli = (require.main === module);
 
 function Geiger(options) {
@@ -28,6 +26,8 @@ Geiger.prototype.compile = function () {
 
 Geiger.prototype.watch = function () {
 };
+
+module.exports.Geiger = Geiger;
 
 if (isCli) {
   c
