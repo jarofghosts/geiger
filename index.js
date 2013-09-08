@@ -23,12 +23,16 @@ function Geiger(options) {
   return this;
 }
 
-Geiger.prototype.compile = function () {
+Geiger.prototype.compile = function (cb) {
   var rs = new Readable();
   rs.push(this.settings.dir);
   rs.push(null);
 
   files = rs.pipe(dirstream({ onlyFiles: true }));
+  files.on('data', function (data) {
+    
+  });
+  files.on('end', cb);
 };
 
 Geiger.prototype.watch = function () {
