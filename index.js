@@ -19,23 +19,28 @@ function Geiger(options) {
     dir: activeDir,
     config: config
   };
+  this.queue = [];
+  this.processing = null;
 
   return this;
 }
 
 Geiger.prototype.compile = function (cb) {
   var rs = new Readable();
+
   rs.push(this.settings.dir);
   rs.push(null);
 
   files = rs.pipe(dirstream({ onlyFiles: true }));
   files.on('data', function (data) {
-    
-  });
+    if (data) this.queue.push(data);
+    if (!this.processing) this.startProcessing();
+  }.bind(this));
   files.on('end', cb);
 };
 
 Geiger.prototype.watch = function () {
+
 };
 
 module.exports.Geiger = Geiger;
