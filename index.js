@@ -20,7 +20,7 @@ function Geiger(options) {
     config: config
   };
   this.queue = [];
-  this.processing = null;
+  this.processing = false;
 
   return this;
 }
@@ -34,11 +34,16 @@ Geiger.prototype.compile = function (cb) {
   files = rs.pipe(dirstream({ onlyFiles: true }));
   files.on('data', function (data) {
     if (data) this.queue.push(data);
-    if (!this.processing) this.startProcessing();
+    if (!this.processing) {
+      this.processing = true;
+      this.startProcessing();
+    }
   }.bind(this));
   files.on('end', cb);
 };
 
+Geiger.prototype.transform = function (filename, cb) {
+};
 Geiger.prototype.watch = function () {
 
 };
